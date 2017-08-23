@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
 
     //This action gets called when either the true or false button is pressed
-    @IBAction func answerPressed(sender: AnyObject) {
+    @IBAction func answerPressed(_ sender: AnyObject) {
     
         // Make pickedAnswer equal to true if the true button with tag 1 is pressed
         if sender.tag == 1 {
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
             pickedAnswer = false
         }
         checkAnswer()
-        questionNumber++
+        questionNumber += 1
 
         updateUI()
     }
@@ -80,17 +80,17 @@ class ViewController: UIViewController {
         } else {
             
             // 1. Create a UIAlertController named alert
-            let alert = UIAlertController(title: "Awesome", message: "You've finished all the questions. Do you want to start over?", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Awesome", message: "You've finished all the questions. Do you want to start over?", preferredStyle: .alert)
             
             // 2. Make the button on this alert call the startOver() method
-            let restartAction = UIAlertAction(title: "Hell Yeah", style: .Default, handler: { UIAlertAction in self.startOver()
+            let restartAction = UIAlertAction(title: "Hell Yeah", style: .default, handler: { UIAlertAction in self.startOver()
             })
             
             // 3. Add the UIAlertAction to the UIAlertController
             alert.addAction(restartAction)
             
             // 4. Present the alert to make it appear on screen
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         if pickedAnswer == correctAnswer {
             print("Yup, you got it")
             ProgressHUD.showSuccess("Correct")
-            score++
+            score += 1
         } else {
             print("Wrong!")
             ProgressHUD.showError("Wrong")
@@ -122,8 +122,8 @@ class ViewController: UIViewController {
         
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
 }   // End of the class
